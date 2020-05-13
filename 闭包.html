@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        * 概念上的闭包
+        *     定义 : 能够访问自由变量的函数
+        * 自由变量:
+        *     定义 : 自由变量是在函数中使用,但既不是函数参数,也不是函数的局部变量
+        * 结论 : 访问了自由变量的函数
+        *
+        * 闭包 :
+        *    定义 : 子函数引用父级函数中的值
+        * */
+
+        var data = []
+
+        // for (var i = 0; i < 3; i++) {
+        //     data[i] = function () {
+        //         console.log(i);
+        //     };
+        // }
+
+
+        //当执行到 data[0] 函数之前,此时全局上下问VO为
+        // globalContext = {
+        //     VO : {
+        //         data:[...],
+        //         i:3
+        //     }
+        // }
+
+        //当执行到 data[0] 函数的时候,data[0]函数作用域链为
+        // data[0]Context = {
+        //     scope : [AO,globalContext.VO]
+        // }
+        //data[0]Context 的AO没有i值,所以会直接从 所以会直接从golbalContext.VO 中查找i,i为3,所以打印结果就为3
+
+        for(var i=0;i<3;i++) {
+            data[i] = (function(i){
+                return function(){
+                    console.log(i)
+                }
+            })(i);
+        }
+        data[0](); data[1](); data[2]();
+
+
+        //当执行data[0]函数的时候, data[0]函数的作用域链发生了改变
+        // data[0]Context = {
+        //     scope:[AO,匿名函数globalContextAO,匿名函数globalContext.VO]
+        // }
+
+        // 匿名函数Context = {
+        //     AO :{
+        //         arguments:{
+        //             0:0,
+        //             length:1
+        //         },
+        //         i:0
+        //     }
+        // }
+        // data[0]Context 的 AO 并没有 i 值，所以会沿着作用域链从匿名函数 Context.AO 中查找，
+        // 这时候就会找 i 为 0，找到了就不会往 globalContext.VO 中查找了，
+        // 即使 globalContext.VO 也有 i 的值(值为3)，所以打印的结果就是 0
+    </script>
+</body>
+</html>

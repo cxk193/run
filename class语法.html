@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <script>
+        var that
+        class Person {
+            constructor(name,age,height) {
+                that = this
+                //this指向被实例化的对象
+                this.name = name
+                this.age = age
+                this.height = height
+            }
+            getInfo(){
+                console.log(that === this) //true
+                console.log(this.name,this.age,this.height)
+            }
+        }
+        const person = new Person("兵兵",19,1.75)
+        var _that
+        class Son extends Person {
+            constructor(name,age,height){
+                //super 关键字用于访问和调用父类的构造函数,可以调用父类的构造函数,也可以调用子类的普通函数
+                super(...arguments) //...arguments 将对象中的属性和方法解构赋值过来
+                //调用了父类的构造函数,此时只需要把参数传进去
+                // this.name = name 
+                // this.age = age
+                // this.height = height
+                _that = this
+                this.btn = document.querySelector('#btn')
+                this.btn.onclick = this.getParent
+            }
+            getParent(){
+                console.log(this)
+                console.log(_that.name,_that.age,_that.height)
+            }
+        }
+
+        const son = new Son('邱邱',11,1.1)
+
+
+        // Array.prototype = {
+        //     num(){
+        //         let num = 0
+        //         for(let i=0;i<this.length;i++){
+        //             num += this[i]
+        //         }
+        //         return num
+        //     }
+        // }
+        Array.prototype.num = function (){
+                let num = 0
+                for(let i=0;i<this.length;i++){
+                    num += this[i]
+                }
+                return num
+            }
+        let arr = [1,2,3]
+        console.log(arr.num())
+
+        function sub(x,y){
+            return x+y
+        }
+
+        const o = {
+            name:'lucy'
+        }
+        
+        console.log(sub.call(o,1,2));
+
+
+        //借用构造函数继承父类函数
+        //构造函数 + 原型对象 = 组合继承
+
+        function Father(name,age){
+
+            //这里的this === s
+            this.name = name
+            this.age = age
+        }
+        // Sco.prototype = Father.prototype;
+        Sco.prototype = new Father()
+        Sco.prototype.constructor = Sco
+        Sco.prototype.exam = function(){
+            console.log('子集函数的方法')
+        }
+
+        function Sco(name,age,score){
+            Father.call(this,name,age)
+            this.score = score
+        }
+        const s = new Sco('刘德华',56,99)
+        console.log(s.name)
+        console.log(s.score)
+        console.log(s)
+        console.log(Father.prototype)
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="mytime">00:00:00</h1>
+    <script>
+    // 	//检测数组对象是否重复
+
+    // //cur [] next : 键值对 对象 数组对象去重 去重后的数组重新赋值给 this.points 数组
+    // this.points = this.address.reduce((current,next) => {
+    // 	obj[next.latitude] ? "" : obj[next.latitude] = true && current.push(next);
+    // 	let circle = {
+    // 		latitude:next.latitude,
+    // 		longitude:next.longitude,
+    // 		iconPath:'../../static.png'
+    // 	}
+    
+    // 	if(obj[next.latitude] ? "" : obj[next.latitude]){
+    // 		this.markers.push(circle)
+    // 	}
+    // 	return current
+    // },[]);	
+
+    //     经纬度不重复的时候 push 一条 数据
+
+    function GetDistance(lat1,  lng1,  lat2,  lng2){
+      var radLat1 = rad(lat1);
+      var radLat2 = rad(lat2);
+      var a = radLat1 - radLat2;
+      var b = rad(lng1) - rad(lng2);
+      var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+      s = s * 6378.137;// EARTH_RADIUS 地球赤道长度;
+      s = Math.round(s * 10000) / 10000;
+      return s;
+    }
+    </script>
+</body>
+</html>

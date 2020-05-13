@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //根据条件 筛选一个新的数组
+        // var porducts = [
+        //     {name:"cucumber",type:"vegetable"},
+        //     {name:"banana",type:"fruit"},
+        //     {name:"celery",type:"vegetable"},
+        //     {name:"orange",type:"fruit"},
+        // ];
+        // var filterProducts = []
+
+        // for(var i=0;i<porducts.length;i++) {
+        //     if(porducts[i].type === "fruit"){
+        //         filterProducts.push(porducts[i])
+        //     }
+        // }
+        // console.log(filterProducts)
+        //
+        // var Fruit = porducts.filter((item,index)=>{
+        //     return  item.type === "fruit"
+        // })
+        // console.log(Fruit)
+
+
+        //筛选 数量大于0 价格小于10
+        var products = [
+            {name:"cucumber",type:"vegetable",quantity:0,price:1},
+            {name:"banana",type:"fruit",quantity:10,price:16},
+            {name:"celery",type:"vegetable",quantity:30,price:8},
+            {name:"orange",type:"fruit",quantity:3,price:6}
+        ];
+
+        var vagetable = products.filter(item=>{
+            return item.quantity > 0 && item.price < 10
+        })
+        console.log(vagetable)
+
+        //根据 对象中的Id值 过滤掉 数组中的Id值
+
+        var post = {Id:4,title:'javascript'}
+
+        var comments = [
+            {postId:4,content:'Angular4'},
+            {postId:2,content:'VUE.js'},
+            {postId:3,content:'Node.js'},
+            {postId:4,content:'React.js'}
+        ]
+
+        function filtrId(post,common){
+            return common.filter(function(item){
+                return item.postId === post.Id
+            })
+        }
+        console.log(filtrId(post, comments));
+        
+    </script>
+</body>
+</html>

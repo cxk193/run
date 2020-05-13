@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height: 2000px;">
+    <div id="container">0</div>
+    <script>
+
+        // function debounce(fn,delay){
+        //     let time = null
+        //     return function(){
+        //         if(time){
+        //             clearTimeout(time)
+        //             time = setTimeout(fn,delay)
+        //         }else{
+        //             clearTimeout(time)
+        //         }
+        //     }
+        // }
+
+        // function showTop(){
+        //     var scrollTop = document.body.scrollTo || document.documentElement.scrollTop
+        //     scrollTop++
+        // }
+       
+        container.onmousemove = debounce(getUser,1000)
+
+
+       
+
+
+
+
+
+
+    </script>
+</body>
+</html>

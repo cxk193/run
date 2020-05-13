@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Relect.get()
+                从对象
+                    target[propetyKey]中读取属性类似
+
+                语法 : Relect.get(target,propertyKey,reciver)
+
+                target : 需要获取值的对象
+
+                propertyKey : 需要获取的键值对
+
+                reciver : 如果target中指定了调用的gatter,reciver作为调用时的this
+
+                异常:  
+                    如果目标值类型不是一个object,抛出一个 TypeError
+
+            Reflect.set()
+                工作方式就像给一个属性加上属性值
+
+                语法
+                    Reflect.set(target,property,value,reciver)
+
+            设置成功返回一个boolean
+
+        */
+
+        var obj = {x:1,y:2}
+        
+        //读取对象
+        console.log(Reflect.get(obj,'x')); //1
+        
+        //读取数组
+        console.log(Reflect.get(['oo','bb'],1)); //bb
+        
+        var x = {p:1}
+        var obj = new Proxy(x,{
+            get(t,k,r){
+                return k+'bar'
+            }
+        })
+
+        Reflect.get(obj,'foo') //foobar
+        
+        
+
+
+    </script>
+</body>
+</html>

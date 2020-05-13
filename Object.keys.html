@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+
+        var data = {    
+            id:1,
+            name:"兵兵",
+            age:19
+        }
+        
+        //Object.keys() 传入一个对象,返回一个 属性名 数组
+        const fargment = document.createDocumentFragment();
+        var gd = Object.keys(data).forEach(item=>{
+            let li = document.createElement('li')
+            li.innerHTML = data[item]
+            fargment.appendChild(li)
+        })
+
+        box.appendChild(fargment)
+
+    </script>
+</body>
+</html>

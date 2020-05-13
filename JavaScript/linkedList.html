@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // class Node {
+        //     constructor(element){
+        //         this.element = element
+        //         this.next = null
+        //     }
+        // }
+
+        // class LinkedList {
+        //     constructor(){
+        //         this.head = null
+        //         this.length = 0
+        //     }
+        //     /*
+        //         链表尾部追加元素的两种情况 : 
+        //             1:链表本身为空,新添加的数据是唯一的节点
+        //             2:链表本身不为空,需要向链表尾部追加其它节点
+        //     */
+
+        //     append(element){
+        //         let newNode = new Node(element);
+
+        //         if(!this.head){
+        //             this.head = newNode;
+        //         }else{
+        //             let current = this.head
+        //             while(current.next){
+        //                 current = current.next
+        //             }
+        //             current.next = newNode
+        //         }
+        //         this.length++
+        //     }
+
+        //     insert(position,element){
+        //         //判断越界问题
+        //         if(position < 0 || position > this.length) return false;
+                
+        //         let newNode = new Node(element);
+
+        //         if(position === 0){
+        //            newNode.next = this.head;
+        //            this.head = newNode;
+        //         }else{
+        //             let index = 0;
+        //             let current = this.head;
+        //             let previous = null;
+        //             while(index++ < position){
+        //                 previous = current
+        //                 current = current.next
+        //             }
+        //             previous.next = newNode
+        //             newNode.next = current
+        //         }
+        //         this.length++
+        //         return true
+        //     }
+
+        //     get(position){
+        //         // 判断边界问题
+        //         if(position < 0 || position > this.length-1) return null
+
+        //         let index = 0
+        //         let current = this.head
+        //         while(index++ < position) {
+        //             current = current.next
+        //         }
+        //         return current.element
+        //     }
+
+        //     indexOf(element) {
+        //         let index = 0
+        //         let current = this.head
+        //         while(current){
+        //             if(current.element === element) {
+        //                 return index
+        //             }
+        //             index++
+        //             current = current.next
+        //         }
+        //         return -1
+        //     }
+        //     //删除并且返回
+        //     removeAt(position){
+        //         // 判断边界问题
+        //         if(position < 0 || position > this.length) return false
+
+        //         let current = this.head
+        //         let index = 0
+        //         let previous = null
+        //         if(position === 0){
+        //             this.head = current.next
+        //         }else{
+        //             while(index++ < position){
+        //                 previous = current
+        //                 current = current.next
+        //             }
+        //             previous.next = current.next
+        //         }
+
+        //         this.length--
+
+        //         return current.element
+        //     }
+
+
+        //     update(position,element){
+        //         this.removeAt(position)
+        //         this.insert(position,element)
+        //     }
+
+        //     remove(element){
+        //         const index = this.indexOf(element)
+        //         if(index === -1) return
+
+        //         this.removeAt(index)
+        //         this.length--
+        //     }
+
+        //     isEmpty(){
+        //         return this.length === 0
+        //     }
+
+        //     size(){
+        //         return this.length
+        //     }
+        // }
+        // const linkedList = new LinkedList()
+        // linkedList.append('111')
+        // linkedList.append('222')
+        // linkedList.append('333')
+        // linkedList.append('444')
+        // linkedList.append('555')
+        
+        // console.log(linkedList)
+        // linkedList.insert(3,'bingbing')
+        // console.log(linkedList)
+
+        // console.log(linkedList.get(3))
+
+        // console.log(linkedList.indexOf('123'))
+        // console.log(linkedList.indexOf('333'))
+
+        // console.log( linkedList.removeAt(2) )
+        // linkedList.remove('555')
+
+        // console.log(linkedList)
+
+        // console.log(linkedList.isEmpty())
+
+        // console.log(linkedList.size())
+
+
+
+        class Node {
+            constructor(element){
+                this.element = element
+                this.next = null
+            }
+        }
+
+        class LinkedList {
+            constructor(){
+                this.head = null
+                this.length = 0
+            }
+
+            append(element){
+                let newNode = new Node(element);
+                if(!this.head){
+                    this.head = newNode
+                }else{
+                    let current = this.head
+                    while(current.next){
+                        current = current.next
+                    }
+                    current.next = newNode
+                }
+                this.length++
+            }
+
+            insert(position,element){
+                //判断边界问题
+
+                if(position < 0 || position > this.length) return false;
+                let newNode = new Node(element)
+                if(!this.head){
+                    newNode.next = this.head
+                    this.head = newNode
+                }else{
+                    let index = 0
+                    let current = this.head
+                    let previous = null
+                    while(index++ < position){
+                        previous = current
+                        current = current.next
+                    }
+                    previous.next = newNode
+                    newNode.next = current
+                }
+                this.length++
+                return true
+            }
+
+            get(position) {
+                if(position < 0 || position > this.length-1) return null
+
+                let index = 0
+                let current = this.head
+                while(index++ < position){
+                    current = current.next
+                }
+                index++
+                return current.element
+            }
+
+            indexOf(element){
+                let index = 0
+                let current = this.head
+
+                while(current){
+                    if(current.element === element){
+                        return index
+                    }
+                    index++
+                    current = current.next
+                }
+                return -1
+            }
+
+            //根据 位置 删除元素 返回删除的元素
+            removeAt(position) {
+                if(position < 0 || position>this.length-1) return null
+
+                if(position === 0){
+                    newNode.next = this.head
+                    this.head = newNode
+                }else{
+                    let index = 0
+                    let current = this.head
+                    let previous = null
+                    while(index++ < position){
+                        previous = current
+                        current = current.next
+                    }
+                    previous.next = newNode
+                    newNode.next = current
+                }
+                this.length--
+            }
+        }
+
+        const linkedList = new LinkedList()
+        linkedList.append('111')
+        linkedList.append('222')
+        linkedList.append('333')
+        linkedList.append('444')
+        linkedList.append('555')
+        linkedList.append('666')
+        console.log(linkedList)
+        linkedList.insert(2,'456')
+        console.log(linkedList)
+        console.log(linkedList.get(2))
+
+
+
+    </script>
+</body>
+</html>

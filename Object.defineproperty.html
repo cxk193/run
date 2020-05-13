@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="pre">vue响应式原理</p>
+    <input type="text" id="input">
+    <script>
+        /*
+                Object.defineProperty 无法监听数组下标的变化,
+            导致直接通过数组下标来给数组设置值,不能实时响应
+
+                Object.defineProperty 只能劫持对象的属性,因此需要对每一个对象进行遍历,
+            如果属性值也是一个对象那么么需要深度遍历,劫持一个完成的对象才是一个更好的选择
+        */
+        var obj = {}
+
+        Object.defineProperty(obj,'txt',{
+            set(newVal){
+                document.getElementById('input').value = newVal
+                document.getElementById('pre').innerText = newVal
+            },
+            get(){ 
+                return obj
+            }
+        })
+
+        const input = document.getElementById('input')
+        input.addEventListener('keyup',function(e){
+            obj.txt = e.target.value
+        })
+
+    </script>
+</body>
+</html>

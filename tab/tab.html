@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增删改查tab</title>
+    <link rel="stylesheet" href="">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        @font-face {font-family: "iconfont";
+            src: url('//at.alicdn.com/t/font_1680745_uv7sxac9ux.eot?t=1588577766058'); /* IE9 */
+            src: url('//at.alicdn.com/t/font_1680745_uv7sxac9ux.eot?t=1588577766058#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOwAAsAAAAAB9wAAANkAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqCYIJAATYCJAMUCwwABCAFhG0HYhvmBhEVnIfIfh7YtpE1VuoKdv6PnMOKOkn/OQhKl+7pTjIRlg6zgakLIHX0zkw6IqjkEJb5T4AAsgRcmN53P/tqOwJhos6N0B559F2XAuW/ND36n8tp0xKY385yXHtrR70AowkU6FiDtgZaICXKDWM3UR7EagjAkVDJxPiJ03OxRwE6CUC0NjVUYZ9SomoyBfYIjJKRCrEBHXttpXYHWM8/L76QmT1o6BLQc3b9hFpGm8awVbKhlGJgjacHtHEggWSgQHSXGluRYTCZxNH5nWI04Ig9GpppmAdMy7DVZsPl7kjsCP/wQKLQECAMQLozAKOlkALTwAgkmAeYZSKLiECDYSv7XlJ1ABzbpFIBrAaQookEfKlg6ZnaUzC08Ny1+Nx8y5UzCxLycg8tOHs1qSDv8PHz+xMr3GobGrYvtKzyrt0SsMOnbuvqoYW+A88+5D55mff0acH27du2eT95lv/sWcHz55mb5Xr7jDj8MCFv6+rtC33zLYkW3+evSua3tUVl5YVndrS3tmeG52VFtbWpu7a2t7Wl/xofJrEkHsnLY9z8+8fORK6MuP310T0h7tGn3I5YGXmGrTcHykL867oqB/1Du2tyx9/zq07pnlnxrzsv4bj3tJzaIh/rvKbiuv++fl5doXd8SvPZ13d2eAzU1uS5n3HL37JlxXbPL/MGQr0ZBJylvdNKAWShlgQ2MkIuANvyvEz4Xd9h75SwZRVuOf/sUwC8emqa3GGjaM985yIc1s9htSxQLgeodGXnY6Zt1kltKdScMkfgl1g9vRtH6nO7UYE9Pj3MdoTEILEnGquIyaDjRDYY2DMKHEkyabwTXrqRCOUAJFoqgMDdUdBw5TxI3N3FKuJb0PH1DQzck8A789X9jOce8mePjErwCIc/8JqKQRo5CzLf0LakOMnh5C/k6j0wG0+zkVcsyGP0qd92LmLAMGV4EdbDlAh6poBaxk6k308mpuxCY025O/OIIUWgI3DwB3gaKQwtLc5y73+DrCZRuAbVYfyCWOUbBzNj0xbYV2FphbqWc6pv1pwQBjAYycCLoEcJBgnoy5sFSBNjroe/tzeRipm2wvH84vyM6wBHYEY9TUihhC4M7lfVtdAiMp4P+OoickbXwasilFiYmX6W2/Xw16t/5deDSq026jo=') format('woff2'),
+            url('//at.alicdn.com/t/font_1680745_uv7sxac9ux.woff?t=1588577766058') format('woff'),
+            url('//at.alicdn.com/t/font_1680745_uv7sxac9ux.ttf?t=1588577766058') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+            url('//at.alicdn.com/t/font_1680745_uv7sxac9ux.svg?t=1588577766058#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icondashujukeshihuaico-:before {
+            content: "\e7fe";
+        }
+
+        .iconjiantouarrow486:before {
+            content: "\e6aa";
+        }
+
+        .iconxiazai6:before {
+            content: "\e606";
+        }
+
+        .iconsousuo:before {
+            content: "\e6a6";
+        }
+
+        ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #tab{
+            width: 770px;
+            height: 440px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        .first_nav{
+            width: 100%;
+            height: 61px;
+            overflow: hidden;
+        }
+
+        ul {
+            float: left;
+            width: 80%;
+            height: 60px;
+        }
+
+        .first_nav > ul li{
+            position: relative;
+            float: left;
+            width: 100px;
+            line-height: 60px;
+            text-align: center;
+            background-color: skyblue;
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .first_nav .iconfont{
+            position: absolute;
+            top: -25px;
+            right: 0;
+        }
+
+        .first_nav .active{
+            background-color: #fff;
+            border-bottom:0;
+        }
+
+        .addBtn{
+            float: right;
+            width: 100px;
+            box-sizing: border-box;
+            line-height: 60px;
+            text-align: center;
+            background-color: #ccc;
+        }
+
+        .content{
+            position: relative;
+            width: 100%;
+            height: 330px;
+            background-color: #aaa;
+            margin-top: 20px;
+        }
+        section{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: skyblue;
+            display: none;
+        }
+        
+        .content_active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        功能需求:
+        1.点击tab栏可以切换
+        2.点击加号可以添加tab项和内容项
+            创建新的li 和 新的section
+            创建的新标签追加到对应的父元素中
+        3.被点击的tab项和tab所对应的内容项会被删除
+        4.点击tab,和内容文字会被修
+         思路: 双击文字时,生成一个文本框,失去焦点时或者按下回车键时,文本框的值赋值给元素
+            解决双击选中的bug
+            window.getSelection?window.getSelection:document.selection.empty();
+     -->
+    <div class="tabBox" id="tab">
+        <div class="first_nav">
+            <ul>
+                <li class="active"><span>测试一</span><span class="iconfont icondashujukeshihuaico-"></span></li>
+                <li><span>测试</span><span class="iconfont icondashujukeshihuaico-"></span></li>
+                <li><span>测试</span><span class="iconfont icondashujukeshihuaico-"></span></li>
+            </ul>
+            <div class="addBtn">
+                <span>+</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <section class="content_active">内容一</section>
+            <section>内容二</section>
+            <section>内容三</section>
+        </div>
+    </div>
+    <script src="./js/tab.js"></script>
+</body> 
+</html>

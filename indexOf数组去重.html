@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">add on 方法</button>
+    <script>
+        Element.prototype.on = Element.prototype.addEventListener;
+
+        NodeList.prototype.on = function (event,fn){
+           []['forEach'].call(this,function(el){
+                el.on(event,on)
+           })
+        }
+
+        btn.on('click',function(){
+            btn.style.background = 'skyblue'
+        })
+
+        let upint = [1,7,4,6,4,6,4,8,9,0,2]
+        let arr = []
+
+        upint.sort((a,b)=>{
+            return a-b
+        }).forEach(item=>{
+            if(arr.indexOf(item) === -1 ){
+                arr.push(item)
+            }
+        })
+
+        // let person = [
+        //     {id: 0, name: "小明"},
+        //     {id: 1, name: "小张"},
+        //     {id: 2, name: "小李"},
+        //     {id: 3, name: "小孙"},
+        //     {id: 1, name: "小周"},
+        //     {id: 2, name: "小陈"} 
+        // ];
+        // let obj = {};
+
+        // let peon = person.reduce((cur,next) => {
+        //     obj[next.id] ? "" : obj[next.id] = true && cur.push(next);
+        //     return cur;
+        // },[]) //设置cur默认类型为数组，并且初始值为空的数组
+        // console.log(peon);
+
+        /*
+            arr 表示将要原数组；
+            prev 表示上一次调用回调时的返回值，或者初始值 init;
+            cur 表示当前正在处理的数组元素；
+            index 表示当前正在处理的数组元素的索引，若提供 init 值，则索引为0，否则索引为1；
+            init 表示初始值。
+        */
+
+        let arrList = [1,4,7,2,5,8,3,6,9]
+        const sun = arrList.reduce((x,y)=>x+y)
+        const mul = arrList.reduce((x,y)=>x*y)
+
+        // 计算数组中每个元素出现的次数
+        let names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+        const step = names.reduce((pre,cur)=>{
+            if(cur in pre){
+                pre[cur]++
+            }else{  
+                pre[cur] = 1
+            }
+            return pre
+        },{})
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createDocumentFrgment()</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script>
+        
+        /*
+                DocumentFragments 是DOM节点,不是dom树的一部分,通常用来创建文档片段
+            将元素附加到文档片段,然后将文档片段附加到dom树上面,文档片段按最后又被所有子元素替代
+
+                文档片段存储到内存当中,并不在dom树中,将元素插入到文档片段不会引
+            起页面的回流,(对于元素位置和几何上的运算),使用文档片段会带来更好的性能
+        */
+
+        var element = document.getElementById('list')
+        var fargment = document.createDocumentFragment(); //创建一个文档片段
+        var browser = ['Firfox','chrome','Opera','Internet Exploer','Safair',]
+
+        browser.forEach(browser=>{
+            let li = document.createElement('li')
+            li.textContent = browser
+            //子元素添加到文档片段当中
+            fargment.appendChild(li)
+        })
+        //文档片段添加到dom中
+        element.appendChild(fargment)
+    </script>
+</body>
+</html>

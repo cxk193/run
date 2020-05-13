@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let max=10000; // 最大数
+    let arr=[0,1]; // 斐波那契数列由 0 和 1 开始
+    let fibonacci = ()=>{
+        let _len = arr.length;
+        let _sub = arr[_len-2] + arr[_len-1];
+        if (arr[_len-1]<max){
+            arr.push(_sub);
+            fibonacci();
+        }
+    };
+    fibonacci()
+    console.log(arr);
+
+    </script>
+</body>
+</html>
